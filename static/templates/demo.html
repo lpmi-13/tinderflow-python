@@ -1,0 +1,124 @@
+<div class="navbar navbar-default navbar-fixed-top navbar-inverse" ng-hide="loading">
+
+    <div class="navbar-header">
+
+        <button type="button" class="btn btn-default navbar-btn" ng-click="goToHome()">
+            <span class="glyphicon glyphicon-home"></span>
+        </button>
+        <button type="button" class="btn btn-default navbar-btn" ng-click="goToDemo()">
+            <span class="glyphicon glyphicon-education"></span>
+        </button>
+
+    </div>
+
+</div>
+
+<div class="container" ng-hide="loading">
+    <div class="row" ng-hide="stats">
+        <div class="col-xs-12">
+            <h1>Once the commit data is loaded, swipe right if you like it, left if you don't!</h1>
+            <div class="row">
+                <div id="slides_control" class="col-md-12">
+                    <div id='bigSlide' ng-hide="sendingData">
+                        <h1><pre><code style="font-size:2.4em;">{{currentCommit.text}}</code></pre></h1>
+                    </div>
+                    <img width="100%" src="static/assets/images/ajax-loader2.gif" ng-show="sendingData" />
+                </div>
+            </div>
+            <div class="row" ng-hide="sendingData">
+                <div id="bad-ones" class="col-md-4">
+                    <table>
+                        <tr>
+                            <td>average sentence length: {{badOnes.avgSentenceLength.toFixed(2)}}</td>
+                        </tr>
+                        <tr>
+                            <td>average longest word: {{badOnes.avgLongestWord.toFixed(2)}}</td>
+                        </tr>
+                        <tr>
+                            <td>average word length: {{badOnes.avgWordLength.toFixed(2)}}</td>
+                        </tr>
+                        <tr>
+                            <td>average lexical diversity: {{badOnes.avgDiversity.toFixed(2)}}</td>
+                        </tr>
+                        <tr>
+                            <td>average lexical density: {{badOnes.avgDensity.toFixed(2)}}</td>
+                        </tr>
+                        <tr>
+                            <td>average # of nouns: {{badOnes.avgNouns.toFixed(2)}}</td>
+                        </tr>
+                        <tr>
+                            <td>average # of verbs: {{badOnes.avgVerbs.toFixed(2)}}</td>
+                        </tr>
+                        <tr>
+                            <td>average # of adjectives: {{badOnes.avgAdjectives.toFixed(2)}}</td>
+                        </tr>
+                        <tr>
+                            <td>average # of adverbs: {{badOnes.avgAdverbs.toFixed(2)}}</td>
+                        </tr>
+                        <tr>
+                            <td>average # of modals: {{badOnes.avgModals.toFixed(2)}}</td>
+                        </tr>
+                    </table>
+                    <div>
+                        <button type="button" class="btn btn-default btn-sm glyphicon glyphicon-arrow-left" style="width:100%;" ng-click="classifyBadCommit()"></button>
+                    </div>
+                </div>
+                <div id="good-ones" class="col-md-4">
+                      <table>
+                        <tr>
+                          <td>average sentence length: {{goodOnes.avgSentenceLength.toFixed(2)}}</td>
+                        </tr>
+                        <tr>
+                          <td>average longest word: {{goodOnes.avgLongestWord.toFixed(2)}}</td>
+                        </tr>
+                        <tr>
+                          <td>average word length: {{goodOnes.avgWordLength.toFixed(2)}}</td>
+                        </tr>
+                        <tr>
+                          <td>average lexical diversity: {{goodOnes.avgDiversity.toFixed(2)}}</td>
+                        </tr>
+                        <tr>
+                          <td>average lexical density: {{goodOnes.avgDensity.toFixed(2)}}</td>
+                        </tr>
+                        <tr>
+                          <td>average # of nouns: {{goodOnes.avgNouns.toFixed(2)}}</td>
+                        </tr>
+                        <tr>
+                          <td>average # of verbs: {{goodOnes.avgVerbs.toFixed(2)}}</td>
+                        </tr>
+                        <tr>
+                          <td>average # of adjectives: {{goodOnes.avgAdjectives.toFixed(2)}}</td>
+                        </tr>
+                        <tr>
+                          <td>average # of adverbs: {{goodOnes.avgAdverbs.toFixed(2)}}</td>
+                        </tr>
+                        <tr>
+                          <td>average # of modals: {{goodOnes.avgModals.toFixed(2)}}</td>
+                        </tr>
+                      </table>
+                    <div>
+                      <button type="button" class="btn btn-default btn-sm glyphicon glyphicon-arrow-right" style="width:100%" ng-click="classifyGoodCommit()"></button>
+                    </div>
+                </div>
+                <div class="col-md-4" id="trainingButton" ng-hide="sendingData">
+                <button type="button" class="btn btn-default btn-sm" ng-click="sendTrainingData()">train the model</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" ng-show="stats">
+        <div class="col-xs-12">
+            <h1>stats format: [feature] = [feature count] [class ratio] = [observed ratio]</h1>
+            <div ng-repeat="stat in statistics">
+                <table>
+                    <tr>
+                        <td><h2>{{stat}}</h2></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div ng-show="loading">
+<img width="50%" height="50%" src="static/assets/images/ajax-loader.gif"/>
+</div>

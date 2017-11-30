@@ -1,0 +1,30 @@
+<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+
+    <div class="navbar-header">
+
+        <button type="button" class="btn btn-default navbar-btn" ng-click="goToHome()">
+            <span class="glyphicon glyphicon-home"></span>
+        </button>
+        <button type="button" class="btn btn-default navbar-btn" ng-click="goToDemo()">
+            <span class="glyphicon glyphicon-education"></span>
+        </button>
+        <button type="button" class="btn btn-default navbar-btn" ng-click="goToStats()">
+            <span class="glyphicon glyphicon-stats"></span>
+        </button>
+        <button type="button" class="btn btn-default navbar-btn" ng-click="goToClassify()">
+            <span class="glyphicon glyphicon-qrcode"></span>
+        </button>
+    </div>
+
+</div>
+
+<div class="container">
+    <h1>stats format: [feature] = [feature count] [class ratio] = [observed ratio]</h1>
+    <div ng-repeat="stat in statistics">
+      <table>
+        <tr>
+            <td><h2>{{stat}}</h2></td>
+        </tr>
+      </table>
+    </div>
+</div>
