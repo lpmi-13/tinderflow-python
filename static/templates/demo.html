@@ -26,7 +26,8 @@
                 </div>
             </div>
             <div class="row" ng-hide="sendingData">
-                <div id="bad-ones" class="col-md-4">
+                <div id="bad-ones" class="col-md-5">
+                    <H2 id="bad-title">BAD</H2>
                     <table>
                         <tr>
                             <td>average sentence length: {{badOnes.avgSentenceLength.toFixed(2)}}</td>
@@ -63,7 +64,8 @@
                         <button type="button" class="btn btn-default btn-sm glyphicon glyphicon-arrow-left" style="width:100%;" ng-click="classifyBadCommit()"></button>
                     </div>
                 </div>
-                <div id="good-ones" class="col-md-4">
+                <div id="good-ones" class="col-md-5">
+                    <h2 id="good-title">GOOD</h2>
                       <table>
                         <tr>
                           <td>average sentence length: {{goodOnes.avgSentenceLength.toFixed(2)}}</td>
@@ -100,7 +102,7 @@
                       <button type="button" class="btn btn-default btn-sm glyphicon glyphicon-arrow-right" style="width:100%" ng-click="classifyGoodCommit()"></button>
                     </div>
                 </div>
-                <div class="col-md-4" id="trainingButton" ng-hide="sendingData">
+                <div class="col-md-2" id="trainingButton" ng-hide="sendingData">
                 <button type="button" class="btn btn-default btn-sm" ng-click="sendTrainingData()">train the model</button>
                 </div>
             </div>

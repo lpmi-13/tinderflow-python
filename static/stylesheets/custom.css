@@ -108,8 +108,13 @@ h1,h2,h3,p {
 }
 
 #good-ones td, #bad-ones td {
-  font-size: 1.4em;
-  line-height: 3.5rem;
+  font-size: 2em;
+  line-height: 4.5rem;
+}
+
+#good-title, #bad-title {
+  text-align: center;
+  font-size: 5em;
 }
 
 #classifyThis {
