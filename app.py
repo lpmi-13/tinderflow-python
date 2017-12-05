@@ -19,12 +19,6 @@ _logger = logging.getLogger(__name__)
 def create_app():
     application = Flask(__name__)
 
-    env = Environments(application, default_env='PRODUCTION')
-    env.from_yaml(os.path.join(os.getcwd(), '', 'settings.yaml'))
-    _logger.info('Using "%s" environment settings; Sentence API root is "%s".',
-                 application.config.get('ENVIRONMENT', None),
-                 application.config.get('API_ROOT_SENTENCE', None))
-
     return application
 
 
@@ -38,13 +32,11 @@ def main():
 
 @app.route('/data')
 def send_initial_data():
-    _logger.debug('Sending text data with measurements')
 
     return jsonify(languageStats(textArray))
 
 @app.route('/train', methods=['POST'])
 def collect_data_for_training_model():
-    _logger.debug('Collecting data and training model.')
 
     global classifier
     classifier = trainModel(request.data)
