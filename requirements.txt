@@ -2,4 +2,4 @@ Flask==1.0.0
 gunicorn==19.6.0
 requests==2.20.0
 flask-environments==0.1
-nltk==3.2.2
+nltk==3.4.5
