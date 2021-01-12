@@ -11,3 +11,9 @@ download the nltk data:
 $ import nltk
 $ nltk.downloader('all')
 ```
+
+then
+
+```
+$ python2 app.py
+```
