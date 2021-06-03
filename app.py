@@ -1,11 +1,9 @@
 import logging
 import os
 import sys
-import StringIO
 
 import requests
 from flask import Flask, render_template, request, jsonify
-from flask_environments import Environments
 
 from dataStore import textArray
 from languageModule import languageStats 
