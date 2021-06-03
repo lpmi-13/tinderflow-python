@@ -1,6 +1,6 @@
 # Natural Language Toolkit: Naive Bayes Classifiers
 #
-# Copyright (C) 2001-2021 NLTK Project
+# Copyright (C) 2001-2020 NLTK Project
 # Author: Edward Loper <edloper@gmail.com>
 # URL: <http://nltk.org/>
 # For license information, see LICENSE.TXT
@@ -126,6 +126,8 @@ class NaiveBayesClassifier(ClassifierI):
         cpdist = self._feature_probdist
         print("Most Informative Features")
 
+        info_features = []
+
         for (fname, fval) in self.most_informative_features(n):
 
             def labelprob(l):
@@ -152,6 +154,9 @@ class NaiveBayesClassifier(ClassifierI):
                     % (fname, fval, ("%s" % l1)[:6], ("%s" % l0)[:6], ratio)
                 )
             )
+            info_features.append("%24s = %-14r     %6s : %-6s = %s : 1.0" % (fname, fval, ("%s" % l1)[:6], ("%s" % l0)[:6], ratio))
+
+        return info_features
 
     def most_informative_features(self, n=100):
         """
