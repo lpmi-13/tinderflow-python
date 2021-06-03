@@ -4,6 +4,7 @@ import sys
 
 import requests
 from flask import Flask, render_template, request, jsonify
+from flask_talisman import Talisman
 
 from dataStore import textArray
 from languageModule import languageStats 
@@ -21,6 +22,7 @@ def create_app():
 
 
 app = create_app()
+Talisman(app)
 
 
 @app.route('/')
@@ -52,4 +54,4 @@ def classify_commit():
     return classifier.classify(features)
 
 if __name__ == "__main__":
-    app.run(port=5002)
+    app.run(debug=True, port=5002)
