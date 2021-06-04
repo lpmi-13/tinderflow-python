@@ -22,7 +22,18 @@ def create_app():
 
 
 app = create_app()
-Talisman(app)
+
+content_security_policy = {
+  "default-src": [
+    '\'self\'',
+  ],
+  "style-src": [
+    '\'self\'',
+    '\'unsafe-inline\'',
+  ],
+}
+
+Talisman(app, content_security_policy=content_security_policy)
 
 
 @app.route('/')
